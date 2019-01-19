@@ -1,0 +1,206 @@
+﻿<Page xmlns:Controls="clr-namespace:ChampionshipSolutions.Controls"  
+      x:Class="ChampionshipSolutions.ImportEntryFormPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChampionshipSolutions"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      xmlns:avalon ="http://icsharpcode.net/sharpdevelop/avalonedit"
+      d:DesignHeight="320" d:DesignWidth="500"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      Title="Import Entry Form" Loaded="Page_Loaded">
+    <Page.DataContext>
+        <Binding Source="{x:Static Application.Current}"/>
+    </Page.DataContext>
+
+    <xctk:BusyIndicator x:Name="BusyIndicator" >
+    <xctk:Wizard  CancelButtonClosesWindow="False" FinishButtonClosesWindow="False" Finish="Wizard_Finish" PageChanged="Wizard_PageChanged" Help="Wizard_Help" Cancel="Wizard_Cancel" x:Name="ImportWizard" >
+        <xctk:WizardPage x:Name="IntroPage" 
+                                   Title="Import Entry Form"
+                                   Description="This wizard will guide you through importing an entry form.">
+            <DockPanel>
+                <TextBlock TextWrapping="Wrap" DockPanel.Dock="Top">The entry form should be an XML document like the one below.</TextBlock>
+                <TextBlock TextWrapping="Wrap" DockPanel.Dock="Top">The Teams and Schools elements are part of a validation check to ensure that there are no missing Schools or Teams in our database.</TextBlock>
+                <TextBlock TextWrapping="Wrap" DockPanel.Dock="Top">The Changes element contains athlete information that has been changed thus requires updating.</TextBlock>
+                <TextBlock TextWrapping="Wrap" DockPanel.Dock="Top">All records where GlobalID is missing, blank or 0 indicates this athlete will be added to the database.</TextBlock>
+                <avalon:TextEditor  Name="xmlExample"  DockPanel.Dock="Bottom" FontFamily="Consolas"
+                                    SyntaxHighlighting="XML" FontSize="10pt" ShowLineNumbers="True" IsReadOnly="True" />
+            </DockPanel>
+        </xctk:WizardPage>
+        <xctk:WizardPage x:Name="OpenImportPage" PageType="Interior"
+                                   Title="Open Import File"
+                                   Description="Drag an entry form file onto this screen."
+                                   CanSelectNextPage="False">
+            <Grid Drop="Grid_Drop" AllowDrop="True">
+                <TextBlock x:Name="OpenMessage" TextWrapping="Wrap" Margin="25" FontWeight="Bold" TextAlignment="Center" FontSize="16" >
+                    Drop the entry from file here.
+                </TextBlock>
+            </Grid>
+        </xctk:WizardPage>
+        <xctk:WizardPage x:Name="CheckTeams" PageType="Interior"
+                                   Title="Checking Teams"
+                                   Description="Athletes will be entered into these teams."
+                                   CanSelectNextPage="False">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" HorizontalAlignment="Center">Team</TextBlock>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center">Short Name</TextBlock>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Center"># Athletes</TextBlock>
+                <TextBlock Grid.Column="3" HorizontalAlignment="Center"></TextBlock>
+
+                    <ItemsControl Grid.Row="1" Grid.ColumnSpan="4" BorderThickness="0" ItemsSource="{Binding Teams}" Margin="0,0,0,0.04" Grid.RowSpan="2" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0,0,0,1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="3" Text="{Binding Name, Mode=OneWay}" />
+
+                                <TextBlock Grid.Column="1" Margin="3" Text="{Binding ShortName, Mode=OneWay}" />
+
+                                <TextBlock Grid.Column="2" Margin="3" Text="{Binding AthleteCount, Mode=OneWay}" />
+
+                                <Button Grid.Column="3" Margin="3"  Grid.RowSpan="1" Command="{Binding New}" CommandParameter="{Binding}" ToolTip="Add Team Standard"  >
+                                    <Image Source="/Assets/Icons/add_40x.png" Width="12" Margin="2" />
+                                </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+                </ScrollViewer>
+        </xctk:WizardPage>
+        <xctk:WizardPage x:Name="CheckSchools" PageType="Interior"
+                                   Title="Checking Teams"
+                                   Description="Athletes will be entered into these schools."
+                         CanSelectNextPage="False">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="60"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Center">School</TextBlock>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center">Short Name</TextBlock>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Center"># Athletes</TextBlock>
+                    <TextBlock Grid.Column="3" HorizontalAlignment="Center"></TextBlock>
+
+                    <ItemsControl Grid.Row="1" Grid.ColumnSpan="4" BorderThickness="0" ItemsSource="{Binding Schools}" Margin="0,0,0,0.04" Grid.RowSpan="2" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,0,0,1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="40"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Margin="3" Text="{Binding Name, Mode=OneWay}" />
+
+                                        <TextBlock Grid.Column="1" Margin="3" Text="{Binding ShortName, Mode=OneWay}" />
+
+                                        <TextBlock Grid.Column="2" Margin="3" Text="{Binding AthleteCount, Mode=OneWay}" />
+
+                                        <Button Grid.Column="3" Margin="3"  Grid.RowSpan="1" Command="{Binding New}" CommandParameter="{Binding}" ToolTip="Add Team Standard"  >
+                                            <Image Source="/Assets/Icons/add_40x.png" Width="12" Margin="2" />
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
+
+        </xctk:WizardPage>
+            <xctk:WizardPage x:Name="CheckAthletes" PageType="Interior"
+                                   Title="Checking Athletes"
+                                   Description="These Athletes will be entered into the database. Click Next to import."
+                                   CanSelectNextPage="True">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center">Name</TextBlock>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center">School</TextBlock>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center">Team</TextBlock>
+                        <TextBlock Grid.Column="3" HorizontalAlignment="Center">Date Of Birth</TextBlock>
+
+                        <ItemsControl Grid.Row="1" Grid.ColumnSpan="4" BorderThickness="0" ItemsSource="{Binding Athletes}" Margin="0,0,0,0.04" Grid.RowSpan="2" >
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="0,0,0,1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Margin="3" Text="{Binding Name, Mode=OneWay}" />
+
+                                            <TextBlock Grid.Column="1" Margin="3" Text="{Binding School.Name, Mode=OneWay}" />
+
+                                            <TextBlock Grid.Column="2" Margin="3" Text="{Binding Team.Name, Mode=OneWay}" />
+
+                                            <TextBlock Grid.Column="3" Margin="3" Text="{Binding DateOfBirth, Mode=OneWay, StringFormat=d}" />
+
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </ScrollViewer>
+
+            </xctk:WizardPage>
+
+            <xctk:WizardPage x:Name="Finished" PageType="Interior" Loaded="Finished_Loaded"
+                                   Title="Congratulations!" Description="Import complete."
+                                   CanSelectNextPage="False" CanSelectPreviousPage="False" 
+                                   CanCancel="False" CanFinish="True" >
+            </xctk:WizardPage>
+        </xctk:Wizard>
+    </xctk:BusyIndicator>
+    <!--
+    Notes
+        NextPage="{Binding ElementName=Page2}"
+        PreviousPage="{Binding ElementName=IntroPage}">
+    -->
+</Page>

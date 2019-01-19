@@ -1,0 +1,34 @@
+﻿<Page xmlns:Controls="clr-namespace:ChampionshipSolutions.Controls"  
+      x:Class="ChampionshipSolutions.DefaultPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChampionshipSolutions"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="320" d:DesignWidth="500"
+      Title="" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Welcome to Championship Solutions" FontWeight="Bold" TextAlignment="Center" Grid.Row="0"/>
+        <TextBlock Text="To get started please open or create a new Championship below." FontWeight="Bold" TextAlignment="Center" Grid.Row="1"/>
+
+        <TextBlock Text="Recent files" Grid.Row="2" Margin="4,0,0,0"/>
+
+        <ListBox ItemsSource="{Binding}" Grid.Row="3" Background="Transparent" BorderThickness="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding}" Click="Button_Click"></Button>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Page>

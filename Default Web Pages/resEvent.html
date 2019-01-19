@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+   		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Enter Results - {{ Championship }} - {{ EventName }}</title>
+
+    	<link href="css.css" rel="stylesheet" />
+    	<style> 
+			td{padding: 5px;}
+			
+		</style>
+	</head>
+<body onload="setFocusToTextBox()">
+    <!-- Nav Bar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="https://championship.solutions/">Championship.Solutions</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">About <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="https://championship.solutions/Home/About">About Us</a>
+						</li>
+						<li>
+							<a href="https://championship.solutions/Home/Contact">Contact</a>
+						</li>
+					</ul>
+				</li>
+
+
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Links <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="http://www.obsidiancontrols.com/">Obsidian Controls</a>
+						</li>
+						<li>
+							<a href="http://www.wiltsschoolsathletics.org/Blog">Wiltshire Schools' Athletic Association</a>
+						</li>
+						<li>
+							<a href="http://www.thepowerof10.info/">Power Of 10</a>
+						</li>
+						<li>
+							<a href="http://www.esaa.net/">English Schools' Athletic Association</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Legal <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="https://championship.solutions/Home/Docs/TC">Terms and Conditions</a>
+						</li>
+						<li>
+							<a href="https://championship.solutions/Home/Docs/Privacy">Privacy</a>
+						</li>
+						<li>
+							<a href="https://championship.solutions/Home/Docs/Cookies">Cookies</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+	
+		<!-- Breadcrumbs -->
+		<div class="row">
+		<div class="col-lg-12">
+			<ol class="breadcrumb">
+				<li><a href="index.py">Choose a different event</a></li>
+				<li class="active">{{EventName}}</li>
+			</ol>
+		</div>
+	</div>
+		
+		<!-- Title -->
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h1 class="page-header">
+					{{EventName}}
+				</h1>
+			</div>
+		</div>
+
+		<!-- Main Body -->
+		<!-- Add new result -->
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="well">
+					<div class="row">
+						<div class="col-lg-12" align="center">
+							<h4>
+								Add new result
+							</h4>
+
+							<form action="modifyResult.py" method="get" autocomplete="off" class="form-horizontal">
+
+							<table>
+								<tr >
+									<td>Rank :</td>
+									<td>
+										<input class="form-control" name="rank" type="number" min="1" value="{{NextResult}}"/>
+									</td>
+								</tr>
+								<tr>
+									<td>Vest :</td>
+									<td>
+										<input class="form-control" id="vest" name="vest" type="number" min="1" max="999" />
+									</td>
+								</tr>
+								<tr>
+									<td>Value :</td>
+									<td>
+										<input class="form-control" name="value" step="any" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+                                        					Ensure that times are entered as 1.23 for 1 second and 23 hundreds of a second 
+                                        					<br />or 1:23.45 for 1 minute and 23 seconds and 45 hundreds of a second.
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<input class="btn btn-default" type="submit" value="Add Result" />
+									</td>
+								</tr>
+							</table>
+							<input type="hidden" name="eventid" value="{{EventID}}"/>
+							</form>
+						</div>	
+					</div>
+				</div>
+			</div>	
+			<div class="col-sm-6">
+				<div class="well">
+				<div align="center" >
+					<h4>
+						Exports
+					</h4>
+
+					{% for Heat in Heats %}
+						<a class="btn btn-default" style="margin: 5px;" href="resEvent.py?id={{Heat.ID}}">{{Heat.PrintableName}}</a><br />
+					{% endfor %}
+					
+					<a target="_blank" class="btn btn-default" style="margin: 5px;" data-force-window href="/reports/report_eventcard.pdf?eventid={{FinalEventID}}">Event card</a><br />
+					<!--
+					<a target="_blank" class="btn btn-default" style="margin: 5px;" data-force-window href="announcers.py?eventcode={{Event.ShortName}}">Annoncers print out</a><br />
+					-->
+					<a target="_blank" class="btn btn-default" style="margin: 5px;" data-force-window href="ShowCerts.py?eventid={{FinalEventID}}">Certificates</a><br />
+
+					{% for Scan in ScannedFiles %}
+						<a target="_blank" class="btn btn-default" style="margin: 5px;" data-force-window href="zooming.html?image=files%2f{{Scan.ID}}.jpg">{{Scan.Name}}</a><br />
+					{% endfor %}
+
+				</div>
+			</div>
+			</div>
+		</div>
+		
+		
+		<div class="row">
+		<div class="col-sm-12 col-lg-7">
+			<div class="well">
+			
+		        <h4>Results</h4>
+		        <table>
+			        <tr>
+			            <td>Rank</td>
+			            <td>Vest</td>
+			            <td>Name</td>
+			            <td>Value</td>
+			            <td>&nbsp;</td>
+			        </tr>
+			        {% for Result in Results %}
+			        <tr>
+			            <td>{{Result.Rank}}</td>
+			            <td>
+			                <a href="report_vest.pdf?vest={{Result.VestNumber}}">
+			                    {{Result.VestNumber}}
+			                </a>
+			            </td>
+			            <td>
+			                <a href="editAthlete.py?athleteid={{Result.Competitor.Athlete.ID}}">
+			                    {{Result.printNameStr}}
+			                </a>
+			            </td>
+			            <td>{{Result.printResultValue}}</td>
+			            <td>
+			                <input class="btn btn-default" type="button" onclick="setValue({{Result.Rank}},'{{Result.printNameStr}}','{{Result.printResultValue}}')" value="Set value" />
+			                <input class="btn btn-default" type="button" onclick="location.href='removeResult.py?eventid={{EventID}}&rank={{Result.Rank}}';" value='Remove Result' />
+			            </td>
+			        </tr>
+			        {% endfor %}
+			    </table>
+		</div>
+		</div>
+	    <div class="col-sm-12 col-lg-5">
+		   <div class="well">
+                <!-- Entered Competitors results -->
+                   <h4>Entered Competitors</h4>
+                    <table>
+                        <tr>
+                            <td>Vest</td>
+                            <td>Name</td>
+                            <td>In Final</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        {% for Competitor in EnteredCompetitors %}
+                        <tr>
+                            <td>{{Competitor.Vest}}</td>
+                            <td>
+                                <!-- To Do 2016-06-04 Will break for squad -->
+                                <a href="editAthlete.py?athleteid={{Competitor.Athlete.ID}}">
+                                    {{Competitor.Name}}
+                                </a>
+                            </td>
+                            <td>{{Competitor.InFinal}}</td>
+                            <td>
+                                <a class="btn btn-default" href="promote.py?competitorid={{Competitor.ID}}&eventid={{EventID}}">Toggle in Final</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+</div>
+		</div>
+		</div>
+		
+		<!-- Footer Section -->
+		<footer>
+			<hr>
+			<div class="row">
+				<div class="col-lg-12" align="center">
+					<p>Copyright &copy; Championship.Solutions 2017</p>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+	<script src="bootstrap.js"></script>
+	<script>
+        function setValue(rank,name,oldValue) {
+            var value = prompt("Please enter a time for " + name, oldValue);
+
+            if (value != null) {
+                location.href = "setvalue.py?eventid={{EventID}}&rank=" + rank + "&value=" + value;
+            }
+        }
+
+        function openCert(type) {
+            window.open("openCert.py?eventid={{EventID}}&type=" + type);
+        }
+
+function setFocusToTextBox(){
+    document.getElementById("vest").focus();
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<Page xmlns:Controls="clr-namespace:ChampionshipSolutions.Controls"  
+      x:Class="ChampionshipSolutions.ExportsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChampionshipSolutions"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="320" d:DesignWidth="500"
+      Title="Exports">
+    <Page.DataContext>
+        <Binding Path="CurrentChampionship" Source="{x:Static Application.Current}"/>
+    </Page.DataContext>
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Exports" FontWeight="Bold" TextAlignment="Center" Grid.Row="0"/>
+
+        <Button Content="Open Exports Directory" Margin="0,10,10,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="170" Command="{Binding OpenExportsDir}"/>
+
+    </Grid>
+</Page>

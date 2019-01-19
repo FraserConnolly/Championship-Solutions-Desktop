@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+          <Border />
+        </Style>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <Left>0.125in</Left>
+            <Top>0.25in</Top>
+            <Height>0.5in</Height>
+            <Width>5.07292in</Width>
+            <Style>
+              <Color>Black</Color>
+              <NumeralVariant>1</NumeralVariant>
+            </Style>
+            <DataSetName>DataSet2</DataSetName>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>0.52708in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.56875in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.67292in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.57917in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.725in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox23">
+                          <Style>
+                            <BackgroundColor>#FFFFFFFF</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Code</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox24">
+                          <Style>
+                            <BackgroundColor>#FFFFFFFF</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Name</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox25">
+                          <Style>
+                            <BackgroundColor>#FFFFFFFF</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>E</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>ntered</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox26">
+                          <Style>
+                            <BackgroundColor>#FFFFFFFF</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>R</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>esults</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox27">
+                          <Style>
+                            <BackgroundColor>#FFFFFFFF</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>S</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>elected</Value>
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox28">
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ShortName.Value</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox29">
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Name.Value</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox30">
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!CountEntered.Value</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox31">
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!CountResults.Value</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TextBox32">
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>Gray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!CountSelected.Value</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                    <FontStyle>Normal</FontStyle>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Detalis01" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+          </Tablix>
+        </ReportItems>
+        <Height>0.8021in</Height>
+      </Body>
+      <Width>5.3335in</Width>
+      <Page>
+        <PageHeight>11in</PageHeight>
+        <PageWidth>8.5in</PageWidth>
+        <PageHeader>
+          <Style>
+            <BackgroundColor>White</BackgroundColor>
+            <Border />
+          </Style>
+          <Height>0.3442in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+        </PageHeader>
+        <PageFooter>
+          <Style>
+            <BackgroundColor>White</BackgroundColor>
+            <Border />
+          </Style>
+          <Height>0.4792in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="TextBox2">
+              <Left>0.125in</Left>
+              <Top>0.125in</Top>
+              <Height>0.25in</Height>
+              <Width>5in</Width>
+              <Style>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+                <Border />
+              </Style>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Championship.Value,"DataSet2")</Value>
+                      <Style>
+                        <FontWeight>Normal</FontWeight>
+                        <FontStyle>Normal</FontStyle>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+            </Textbox>
+          </ReportItems>
+        </PageFooter>
+        <LeftMargin>0in</LeftMargin>
+        <RightMargin>0in</RightMargin>
+        <TopMargin>0in</TopMargin>
+        <BottomMargin>0in</BottomMargin>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+          <Border />
+        </Style>
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <DataSources>
+    <DataSource Name="ChampionshipSolutions.ViewModel" />
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet2">
+      <Fields>
+        <Field Name="AddAthlete">
+          <DataField>AddAthlete</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="AddCustomData">
+          <DataField>AddCustomData</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="AddHeat">
+          <DataField>AddHeat</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="AddStandard">
+          <DataField>AddStandard</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="AllGroups">
+          <DataField>AllGroups</DataField>
+          <rd:TypeName>System.Collections.ObjectModel.ObservableCollection`1[ChampionshipSolutions.ViewModel.GroupVM]</rd:TypeName>
+        </Field>
+        <Field Name="CertificateTemplate">
+          <DataField>CertificateTemplate</DataField>
+          <rd:TypeName>ChampionshipSolutions.ViewModel.TemplateVM</rd:TypeName>
+        </Field>
+        <Field Name="Championship">
+          <DataField>Championship</DataField>
+          <rd:TypeName>ChampionshipSolutions.ViewModel.ChampionshipVM</rd:TypeName>
+        </Field>
+        <Field Name="ClearChampionshipBestPerformace">
+          <DataField>ClearChampionshipBestPerformace</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="CountEntered">
+          <DataField>CountEntered</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CountResults">
+          <DataField>CountResults</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CountSelected">
+          <DataField>CountSelected</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CountyBestPerformanceArea">
+          <DataField>CountyBestPerformanceArea</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CountyBestPerformanceName">
+          <DataField>CountyBestPerformanceName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CountyBestPerformanceYear">
+          <DataField>CountyBestPerformanceYear</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustomData">
+          <DataField>CustomData</DataField>
+          <rd:TypeName>System.Collections.Generic.List`1[ChampionshipSolutions.DM.ACustomDataValue]</rd:TypeName>
+        </Field>
+        <Field Name="DataEntryTemplate">
+          <DataField>DataEntryTemplate</DataField>
+          <rd:TypeName>ChampionshipSolutions.ViewModel.TemplateVM</rd:TypeName>
+        </Field>
+        <Field Name="DeleteChampionship">
+          <DataField>DeleteChampionship</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="DeleteCustomData">
+          <DataField>DeleteCustomData</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="DeleteHeat">
+          <DataField>DeleteHeat</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="DeleteStandard">
+          <DataField>DeleteStandard</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="EditCustomData">
+          <DataField>EditCustomData</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="EditEvent">
+          <DataField>EditEvent</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="Event">
+          <DataField>Event</DataField>
+          <rd:TypeName>ChampionshipSolutions.DM.AEvent</rd:TypeName>
+        </Field>
+        <Field Name="Groups">
+          <DataField>Groups</DataField>
+          <rd:TypeName>System.Collections.ObjectModel.ObservableCollection`1[ChampionshipSolutions.ViewModel.GroupVM]</rd:TypeName>
+        </Field>
+        <Field Name="hasChanges">
+          <DataField>hasChanges</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="hasHeatsVisibility">
+          <DataField>hasHeatsVisibility</DataField>
+          <rd:TypeName>System.Windows.Visibility</rd:TypeName>
+        </Field>
+        <Field Name="Heats">
+          <DataField>Heats</DataField>
+          <rd:TypeName>System.Collections.ObjectModel.ObservableCollection`1[ChampionshipSolutions.ViewModel.EventVM]</rd:TypeName>
+        </Field>
+        <Field Name="IsHeat">
+          <DataField>IsHeat</DataField>
+          <rd:TypeName>System.Windows.Visibility</rd:TypeName>
+        </Field>
+        <Field Name="Lanes">
+          <DataField>Lanes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Length">
+          <DataField>Length</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MaxCompetitors">
+          <DataField>MaxCompetitors</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MaxCompetitorsPerTeam">
+          <DataField>MaxCompetitorsPerTeam</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MaxGuests">
+          <DataField>MaxGuests</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OpenEntries">
+          <DataField>OpenEntries</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="OpenResults">
+          <DataField>OpenResults</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="PrintChampionshipBestPerformance">
+          <DataField>PrintChampionshipBestPerformance</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ResultsTemplate">
+          <DataField>ResultsTemplate</DataField>
+          <rd:TypeName>ChampionshipSolutions.ViewModel.TemplateVM</rd:TypeName>
+        </Field>
+        <Field Name="Save">
+          <DataField>Save</DataField>
+          <rd:TypeName>System.Windows.Input.ICommand</rd:TypeName>
+        </Field>
+        <Field Name="ShortName">
+          <DataField>ShortName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Standards">
+          <DataField>Standards</DataField>
+          <rd:TypeName>System.Collections.ObjectModel.ObservableCollection`1[ChampionshipSolutions.DM.Standard]</rd:TypeName>
+        </Field>
+        <Field Name="StartTime">
+          <DataField>StartTime</DataField>
+          <rd:TypeName>System.Nullable`1[System.DateTime]</rd:TypeName>
+        </Field>
+        <Field Name="StateColour">
+          <DataField>StateColour</DataField>
+          <rd:TypeName>System.Windows.Media.Brush</rd:TypeName>
+        </Field>
+        <Field Name="TopIndividualCertificates">
+          <DataField>TopIndividualCertificates</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TopLowerYearGroupInividualCertificates">
+          <DataField>TopLowerYearGroupInividualCertificates</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VestTemplate">
+          <DataField>VestTemplate</DataField>
+          <rd:TypeName>ChampionshipSolutions.ViewModel.TemplateVM</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>ChampionshipSolutions.ViewModel</DataSourceName>
+        <CommandType>Text</CommandType>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Championship Solutions</rd:DataSetName>
+        <rd:ObjectDataSourceSelectMethod>get_Events</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.ObjectModel.ObservableCollection`1[ChampionshipSolutions.ViewModel.EventVM] get_Events()</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceType>ChampionshipSolutions.ViewModel.ChampionshipVM, Version=4.1.1103.16180, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>ChampionshipVM</rd:TableName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <DeferVariableEvaluation>false</DeferVariableEvaluation>
+  <DataElementStyle>Attribute</DataElementStyle>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+</Report>

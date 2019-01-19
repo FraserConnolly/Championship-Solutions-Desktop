@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{Title}} - {{ Championship }}</title>
+
+	<link href="css.css" rel="stylesheet" />
+</head>
+<body onload="startup()">
+    <!-- Nav Bar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="https://championship.solutions/">Championship.Solutions</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">About <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="https://championship.solutions/Home/About">About Us</a>
+						</li>
+						<li>
+							<a href="https://championship.solutions/Home/Contact">Contact</a>
+						</li>
+					</ul>
+				</li>
+
+
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Links <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="http://www.obsidiancontrols.com/">Obsidian Controls</a>
+						</li>
+						<li>
+							<a href="http://www.wiltsschoolsathletics.org/Blog">Wiltshire Schools' Athletic Association</a>
+						</li>
+						<li>
+							<a href="http://www.thepowerof10.info/">Power Of 10</a>
+						</li>
+						<li>
+							<a href="http://www.esaa.net/">English Schools' Athletic Association</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Legal <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="https://championship.solutions/Home/Docs/TC">Terms and Conditions</a>
+						</li>
+						<li>
+							<a href="https://championship.solutions/Home/Docs/Privacy">Privacy</a>
+						</li>
+						<li>
+							<a href="https://championship.solutions/Home/Docs/Cookies">Cookies</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+
+	<!-- Breadcrumbs -->
+	<div class="row">
+		<div class="col-lg-12">
+			<ol class="breadcrumb">
+				<li><a href="index.py">Home</a></li>
+				<li class="active">{{Athlete.Fullname}}</li>
+			</ol>
+		</div>
+	</div>
+			
+		<!-- Title -->
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h1 class="page-header">
+					Edit Athlete - {{ Championship }}
+				</h1>
+			</div>
+		</div>
+
+		<!-- Main Body -->
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="well">
+					<div class="row">
+						<div class="col-lg-12" >
+					<form class="form-horizontal" action="setAthlete.py" method="get" autocomplete="off">
+						<input type="hidden" name="athleteid" value="{{AthID}}" /><div class="form-group">
+							<label class="col-md-2">Name :</label>
+							<div class="col-md-6"><input class="form-control" name="name" type="text" value="{{Athlete.Fullname}}" /></div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2">Preferred Name:</label>
+							<div class="col-md-6"><input class="form-control" name="preferedname" type="text" value="{{Athlete.PreferredName}}" /></div>
+						</div>
+						<div class="form-group">          
+							<label class="col-md-2">Date Of Birth:</label>
+							<div class="col-md-6"><input class="form-control disabled" type="text" value="{{AthDoB}}" /></div>
+							<div class="col-md-6">If the date of birth or school is incorect then please speak to the system administrator.</div>
+						</div>
+						<div class="form-group">          
+							<label class="col-md-2">Gender:</label>
+							<div class="col-md-6"><input class="form-control disabled" type="text" value="{{AthGender}}" /></div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2">School :</label>
+							<div class="col-md-6"><input class="form-control disabled" type="text" value="{{AthSchool}}" /></div>
+						</div>
+						<div class="form-group col-md-8" align="center">
+							<input class="btn btn-default" style="width: 100%;" type="submit" value="Save" />
+						</div>
+						
+					</form>
+					</div>
+					</div>
+				</div>	
+			</div>
+			<div class="col-sm-3">
+				<div class="well" align="center" >
+					<h4>Actions</h4>
+						<a class="btn btn-default" target="_blank" href="WizardPage1.py?athleteid={{AthID}}" style="margin: 10px; width: 100px">Questions</a>
+						<br />
+						<a class="btn btn-default" target="_blank" href="reports/report_athleteprofile.pdf?athleteid={{AthID}}" style="margin: 10px">Profile</a>
+						<br />
+						<a class="btn btn-default" target="_blank" href="ShowCerts.py?athleteid={{AthID}}" style="margin: 10px;" >Certificates</a>
+					</div>
+				</div>
+		</div>
+		
+		<!-- Results -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="well">
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<h3>Events</h3>
+					</div>
+
+					<div class="col-lg-4 col-md-12">
+					<h4>Entered events</h4>
+						{% for event in EnteredEvents %}
+							<a href="resEvent.py?id={{event.CompetingIn.ID}}">{{event.Vest}} - {{event.CompetingIn.ShortName}} - {{event.CompetingIn.Name}}</a><br />
+						{% endfor %}
+					</div>
+
+					{% if Results.Count > 0 %}
+					<div class="col-lg-8 col-md-12">
+						<h4>Results</h4>
+						
+						<table >
+							<tr>
+								<td style="padding: 3px"><b>Championship</b></td>
+								<td style="padding: 3px"><b>Event</b></td>
+								<td style="padding: 3px"><b>Rank</b></td>
+								<td style="padding: 3px"><b>Value</b></td>
+							</tr>
+							{% for Result in Results %}
+							<tr>
+								<td style="padding: 3px">{{Result.Event.Championship.Name}}</td>
+								<td style="padding: 3px">{{Result.Event.Name}} </td>
+								<td style="padding: 3px">{{Result.Rank}} </td>
+								<td style="padding: 3px">{{Result.printResultValue}} </td>
+							</tr>
+							{% endfor %}
+						</table>
+						
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<!-- Contacts -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="well">
+					<div class="row">
+						<div class="col-md-12">
+							<h4>Contact Details</h4>
+						</div>
+
+						<div class="col-md-12">
+
+
+							<table>
+								<tr>
+									<td>Contact details on file</td>
+								</tr>
+								{% for e in Contacts %}
+								<tr>
+									<td>
+										<form id="form" method="get" action="delContact.py">
+										{{e.printValue}}
+										<input class="btn btn-default" type="submit" value="Delete" />
+										<input type="hidden" name="athleteid" value="{{AthID}}" />
+										<input type="hidden" name="contactid" value="{{e.ID}}" />
+										</form>
+									</td>
+								</tr>
+								{% endfor %}
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- Footer Section -->
+		<footer>
+			<hr>
+			<div class="row">
+				<div class="col-lg-12" align="center">
+					<p>Copyright &copy; Championship.Solutions 2017</p>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+	<script src="bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ Championship }} {{ Event.Name }}</title>
+    <style type="text/css">
+        td{
+            font-family:Calibri;
+        }
+        .auto-style1 {
+            text-align: center;
+            width: 120px;
+        }
+        .auto-style2 {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style1">Minor Boys</td>
+            <td class="auto-style1">Overall</td>
+        <tr>
+            <td class="auto-style2">Kennet</td>
+            <td class="auto-style1">{{MBKEN.Points}}</td>
+            <td class="auto-style1">{{BKEN}}</td>
+        </tr>
+        <tr>
+            <td class="auto-style2">NW</td>
+            <td class="auto-style1">{{MBNW.Points}}</td>
+            <td class="auto-style1">{{BNW}}</td>
+        </tr>
+        <tr>
+            <td class="auto-style2">Salisbury</td>
+            <td class="auto-style1">{{MBSAL.Points}}</td>
+            <td class="auto-style1">{{BSAL}}</td>
+        </tr>
+        <tr>
+            <td class="auto-style2">Swindon</td>
+            <td class="auto-style1">{{MBSWI.Points}}</td>
+            <td class="auto-style1">{{BSWI}}</td>
+        </tr>
+        <tr>
+            <td class="auto-style2">WW</td>
+            <td class="auto-style1">{{MBWW.Points}}</td>
+            <td class="auto-style1">{{BWW}}</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style1">Minor Girls</td>
+            <td class="auto-style1">Overall</td>
+        </tr>
+        <tr>
+            <td>Kennet</td>
+            <td class="auto-style1">{{MGKEN.Points}}</td>
+            <td class="auto-style1">{{GKEN}}</td>
+        </tr>
+        <tr>
+            <td>NW</td>
+            <td class="auto-style1">{{MGNW.Points}}</td>
+            <td class="auto-style1">{{GNW}}</td>
+        </tr>
+        <tr>
+            <td>Salisbury</td>
+            <td class="auto-style1">{{MGSAL.Points}}</td>
+            <td class="auto-style1">{{GSAL}}</td>
+        </tr>
+        <tr>
+            <td>Swindon</td>
+            <td class="auto-style1">{{MGSWI.Points}}</td>
+            <td class="auto-style1">{{GSWI}}</td>
+        </tr>
+        <tr>
+            <td>WW</td>
+            <td class="auto-style1">{{MGWW.Points}}</td>
+            <td class="auto-style1">{{GWW}}</td>
+        </tr>
+
+    </table>
+    <hr />
+    <table>
+        <tr>
+            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style1">Totals</td>
+        </tr>
+        <tr>
+            <td>Kennet</td>
+            <td class="auto-style1">{{KEN}}</td>
+        </tr>
+        <tr>
+            <td>North Wiltshire</td>
+            <td class="auto-style1">{{NW}}</td>
+        </tr>
+        <tr>
+            <td>Salisbury</td>
+            <td class="auto-style1">{{SAL}}</td>
+        </tr>
+        <tr>
+            <td>Swindon</td>
+            <td class="auto-style1">{{SWI}}</td>
+        </tr>
+        <tr>
+            <td>West Wiltshire</td>
+            <td class="auto-style1">{{WW}}</td>
+        </tr>
+    </table>
+    <hr />
+
+    <table cellpadding="0" cellspacing="5">
+   {% for res in Results %}
+        <tr>
+            <td>{{res.Rank}}</td>
+            <td>{{res.printNameStr}}</td>
+            <td>{{res.Competitor.Team}}</td>
+            <td>{{res.printResultValue}}</td>
+            <td>{{res.achievedStandardsShort}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

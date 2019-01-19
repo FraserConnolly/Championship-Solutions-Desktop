@@ -1,0 +1,69 @@
+﻿<Page x:Class="ChampionshipSolutions.ChampionshipPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChampionshipSolutions"
+      xmlns:localView="clr-namespace:ChampionshipSolutions.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="320" d:DesignWidth="500"
+      Title="Championship Page">
+
+    <Page.DataContext>
+        <Binding Path="CurrentChampionship" Source="{x:Static Application.Current}"/>
+    </Page.DataContext>
+
+    <Grid Margin="5">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Championship:" Visibility="{Binding ShowChampionshipSelector}"/>
+        <ComboBox x:Name="nameComboBox"   Grid.Row="0" Margin="3" ItemsSource="{Binding Championships}"  SelectedItem="{Binding Championship}"  DisplayMemberPath="Name" Grid.Column="1" Visibility="{Binding ShowChampionshipSelector}" />
+
+        <Label VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Margin="3" HorizontalAlignment="Center" Grid.Column="0" Visibility="{Binding ShowChampionshipSelector}">
+            Note: changing Championship here will affect any other users currently on this system.
+        </Label>
+
+
+        <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsEditable}" />
+
+        <Label Content="Short Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Text="{Binding ShortName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsEditable}"/>
+
+        <Label Content="Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+        <DatePicker Grid.Column="1" Margin="3" Grid.Row="4" SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsEditable}"/>
+
+        <Label Content="Age Date Referenece:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+        <DatePicker Grid.Column="1" Margin="3" Grid.Row="5" SelectedDate="{Binding AgeDateReference, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                    ToolTip="This date will be used to calculate a competitors age and year group" IsEnabled="{Binding IsEditable}"/>
+
+        <Label Content="Location:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="6" Text="{Binding Location, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsEditable}" />
+
+        <UniformGrid Grid.Row="7" Grid.Column="1" Rows="1">
+            <Button Margin="3" Content="Update" x:Name="btnUpdate" Command="{Binding Save}" Visibility="Collapsed" />
+            <Button Margin="3" Content="New Championship" Command="{Binding NewChampionship}" Visibility="{Binding ShowChampionshipSelector}" IsEnabled="{Binding IsEditable}"/>
+            <Button Margin="3" Content="Delete Championship" Command="{Binding DeleteChampionship}" Visibility="{Binding ShowChampionshipSelector}" IsEnabled="{Binding IsEditable}"/>
+        </UniformGrid>
+        <UniformGrid Grid.Row="8" Grid.Column="1" Rows="1">
+            <Button Margin="3" Content="Generate Entry Forms" Visibility="Collapsed" Command="{Binding NewEntryForms}" IsEnabled="{Binding IsEditable}"/>
+            <Button Margin="3" Content="Import Entry Form" Command="{Binding ImportEntryForm}" IsEnabled="{Binding IsEditable}"/>
+        </UniformGrid>
+    </Grid>
+</Page>

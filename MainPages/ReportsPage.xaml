@@ -1,0 +1,71 @@
+﻿<Page xmlns:Controls="clr-namespace:ChampionshipSolutions.Controls"  
+      x:Class="ChampionshipSolutions.ReportsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChampionshipSolutions"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="320" d:DesignWidth="500"
+      Title="Reports"
+      Loaded="Page_Loaded">
+    <Page.DataContext>
+        <Binding Path="CurrentChampionship" Source="{x:Static Application.Current}"/>
+    </Page.DataContext>
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Reports" FontWeight="Bold" TextAlignment="Center" Grid.Row="0" />
+
+
+        <WrapPanel Margin="10" Grid.Row="1" >
+
+            <GroupBox Margin="10" Header="Track and Field">
+                <StackPanel Grid.Row="1"  HorizontalAlignment="Left">
+                    <Button Margin="5" Content="Generate Data Entry Sheets" Click="generateDataEventyForms_Click"/>
+                    <Button Margin="5" Content="Generate Certificates" IsEnabled="False" Visibility="Collapsed" />
+                    <Button Margin="5" Content="Results" IsEnabled="False" Visibility="Collapsed"/>
+                    <Button Margin="5" Content="Export Standards to CSV" Click="ExportStandards_Click" />
+                    <Button Margin="5" Content="Export Entries to CSV" Click="ExportEntires_Click" />
+                </StackPanel>
+            </GroupBox>
+
+
+            <GroupBox Margin="10" Header="Cross Country">
+                <StackPanel>
+                    <Button Margin="5" Content="Generate Vest Numbers" Click="ExportVestNumbers_Click " />
+                    <Button Margin="5" Content="Generate Envelopes" Click="ExportEnvelopes_Click " />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Margin="10" Header="Generic">
+                <StackPanel>
+                    <Button Margin="5" Content="Export Results as XML" Click="ExportResultsXML_Click" />
+                    <Button Margin="5" Content="Export Selected Athlete Profiles" Click="ExportAthleteProfiles_Click" />
+                    <Button Margin="5" Content="Export Schools with selection to CSV" Click="ExportSchoolsAndSelecton_Click" />
+                    <Button Margin="5" Content="Export Schools with Contacts" Click="ExportSchoolsWithContacs_Click" Visibility="Visible" />
+                    <Button Margin="5" Content="Export Selected to CSV" Click="ExportSelected_Click" />
+                    <Button Margin="5" Content="Export Competitors" Click="ExportCompetitors_Click" />
+
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Margin="10" Header="Reports">
+                <StackPanel x:Name="gbxReports" />
+            </GroupBox>
+
+        </WrapPanel>
+
+        <UniformGrid Grid.Row="2" Height="auto" Rows="1">
+            <Button Content="Open Exports Directory" Margin="10" Command="{Binding OpenExportsDir}"/>
+            <Button Margin="10" Content="Open Report Editor" Click="OpenReportEditor_Click" />
+        </UniformGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Question 3</title>
+	<link rel="stylesheet" href="css.css" type="text/css" />
+	<style>td{padding: 5px;}</style>
+</head>
+
+<body>
+    <table id="lfrm" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td id="content_td" align="center" valign="middle" style="padding: 4% !important;">
+                <table id="grid" cellpadding="0" cellspacing="20" border="0" width="100%" height="100%">
+                    <tr>
+                        <td align="center">
+                            <form id="form" method="get" action="{{NextPage}}">
+                                <table>
+                                    <tr>
+                                        <td>T-Shirt Size</td>
+                                        <td>
+                                            <select class="form-control" name="Size">
+                                                <option value="Small">Small</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="Large">Large</option>
+                                                <option value="XLarge">X Large</option>
+                                                <option value="XXLarge">XX Large</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="athleteid" value="{{AthleteID}}" />
+                                <input class="btn btn-default" type="submit" name="submitbtn" value="Next" />
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+(function(){
+    window.resizeTo(400, 400);
+})();
+    </script>
+</body>
+</html>

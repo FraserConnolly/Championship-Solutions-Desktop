@@ -1,0 +1,86 @@
+﻿<Page xmlns:Controls="clr-namespace:ChampionshipSolutions.Controls"  
+      x:Class="ChampionshipSolutions.GroupsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChampionshipSolutions"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="320" d:DesignWidth="500"
+      Title="Groups">
+    <Page.DataContext>
+        <Binding Path="CurrentChampionship" Source="{x:Static Application.Current}"/>
+    </Page.DataContext>
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Groups" FontWeight="Bold" TextAlignment="Center" Grid.Row="0"/>
+
+        <ListView Grid.Row="1" Background="Transparent" ItemsSource="{Binding Groups}" BorderThickness="0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" MinWidth="300" />
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" Margin="3" Grid.Row="1" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding CanModify}"/>
+
+                        <TextBox Grid.Column="1" Margin="3" Text="{Binding ShortName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" ToolTip="Short Name" IsEnabled="{Binding CanModify}"/>
+
+                        <Button Margin="3" Grid.Column="2" Command="{Binding Edit}" ToolTip="Edit Group">
+                            <Image Source="/Assets/Icons/Edit_grey_256x.png" Width="12" Margin="2" />
+                        </Button>
+
+                        <Button Margin="3" Grid.Column="3" Command="{Binding Delete}" ToolTip="Remove Group">
+                            <Image Source="/Assets/Icons/delete.png" Width="12" Margin="2" />
+                        </Button>
+
+
+                    </Grid>
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <UniformGrid Grid.Row="10" Columns="4" Margin="7">
+            <Button Margin="3" Command="{Binding NewGroup}" >
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Add Group</TextBlock>
+            </Button>
+            <Button Margin="3" Command="{Binding NewGenderRestriction}">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Add Gender Restriction</TextBlock>
+            </Button>
+            <Button Margin="3" Command="{Binding NewAgeRestriction}">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Add Age Restriction</TextBlock>
+            </Button>
+            <Button Margin="3" Command="{Binding NewDoBRestriction}">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Add Date of Birth Restriction</TextBlock>
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Page>

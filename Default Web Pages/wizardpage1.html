@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Question 1</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="stylesheet" href="css.css" type="text/css" />
+	<style>td{padding: 5px;}</style>
+</head>
+
+<body>
+   <div class="contianer">
+    <table id="lfrm" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td id="content_td" align="center" valign="middle" style="padding: 4% !important;">
+                <table id="grid" cellpadding="0" cellspacing="20" border="0" width="100%" height="100%">
+                    <tr>
+                        <td align="center">
+                            <form id="form" method="get" action="{{NextPage}}">
+
+                                <table>
+                                    <tr>
+                                        <td>South West Avilability</td>
+                                        <td>
+                                            <select class="form-control" name="Availibility">
+                                                <option value="Own Transport">Yes - Own Transport</option>
+                                                <option value="Sheldon Mini Bus">Yes - Sheldon Mini Bus</option>
+                                                <option value="Swindon Mini Bus">Yes - Swindon Mini Bus</option>
+                                                <option value="Salisbury Mini Bus">Yes - Salisbury Mini Bus</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Preferred Event</td>
+                                        <td>
+                                            <input class="form-control" name="PreferredEvent" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Personal Best</td>
+                                        <td>
+                                            <input class="form-control" name="PersonalBest" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <input type="hidden" name="championship" value="South West" />
+                                <input type="hidden" name="athleteid" value="{{AthleteID}}" />
+                                <input class="btn btn-default" type="submit" name="submitbtn" value="Next" />
+                            </form>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <script type="text/javascript">
+(function(){
+    window.resizeTo(400, 400);
+})();
+    </script>
+</body>
+</html>

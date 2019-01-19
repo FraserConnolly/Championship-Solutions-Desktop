@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ChampionshipResults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="EventResult" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="IndividualResult">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Rank" type="xs:positiveInteger" />
+                    <xs:element name="Vest" type="xs:positiveInteger"  minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="CompetitorName" type="xs:string"/>
+                    <xs:element name="Time" type="xs:string"  minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="TimeValue" type="xs:time"  minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="School" type="xs:string"  minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="YearGroup" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="Team" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="TeamShort" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="CertificateEarned" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ScoringTeamResult">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ScoringTeam" type="xs:string" />
+                    <xs:element name="Rank" type="xs:positiveInteger" />
+                    <xs:element name="Team" type="xs:string" />
+                    <xs:element name="TeamShort" type="xs:string" />
+                    <xs:element name="Positions" type="xs:string" />
+                    <xs:element name="SumOfPositions" type="xs:integer" />
+                    <xs:element name="Points" type="xs:positiveInteger" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="EventName" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OverallResult" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="ChampionshipTeamResult">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ScoringTeam" type="xs:string" />
+                    <xs:element name="Rank" type="xs:positiveInteger" />
+                    <xs:element name="Team" type="xs:string" />
+                    <xs:element name="TeamShort" type="xs:string" />
+                    <xs:element name="Points" type="xs:positiveInteger" />
+                    <xs:element name="SumOfPositions" type="xs:integer" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    <xs:attribute name="Championship" type="xs:string" use="required" />
+    <xs:attribute name="LastUpdated" type="xs:dateTime" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

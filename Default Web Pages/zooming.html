@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+<style type="text/css">
+html {
+	height: 100%;
+}
+body {
+	margin: 0px;
+	height: 100%;
+	background-repeat: no-repeat;
+}
+</style>
+<body>
+<script type="text/javascript">
+
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+</script>
+<script type="text/javascript">
+(function(d){
+	function gbp(s)
+	{
+		var r = /(\-?)([\d\.]+)px (\-?)([\d\.]+)px/.exec(s);
+		return [
+			parseInt(r[2]) * ((r[1] == "-") ? (-1) : 1),
+			parseInt(r[4]) * ((r[3] == "-") ? (-1) : 1)
+		];
+	}
+	//console.log(document.location.search);
+	var b = d.body;
+    
+    var url = decodeURIComponent(getQueryVariable("image"));
+    
+	if ( url != "" ) //(b.hasAttribute("data-image"))
+	{
+		b.style.backgroundImage = ["url(",url,")"].join("");
+		b["asize"] = window.innerWidth;
+		b.style.backgroundSize = b.asize + "px";
+		b.style.backgroundPosition = [(b.clientWidth-b.asize)/2,"px ",0,"px"].join("");
+		b.addEventListener("wheel",(function(el){
+			return function(e)
+			{
+				var obps = gbp(el.style.backgroundPosition);
+				var pwfl = [(e.clientX - obps[0]) / el.asize, (e.clientY - obps[1]) / el.asize];
+				el.asize *= (1 + ((e.deltaY / Math.abs(e.deltaY)) * Math.max(0,0.1)));
+				el.asize = Math.min(Math.max(el.asize,500),5000);
+				pwfl[0] = e.clientX - (pwfl[0] * el.asize);
+				pwfl[1] = e.clientY - (pwfl[1] * el.asize);
+				el.style.backgroundSize = el.asize + "px";
+				el.style.backgroundPosition = [pwfl[0],"px ",pwfl[1],"px"].join("");
+				e.preventDefault();
+			}
+		})(b),false);
+		//
+		b.addEventListener("mousedown",(function(el){
+			return function(e)
+			{
+				var offset = gbp(el.style.backgroundPosition);
+				offset[0] -= e.clientX;
+				offset[1] -= e.clientY;
+				el["mouseisdown"] = true;
+				el["mouseoffset"] = offset;
+			}
+		})(b),false);
+		b.addEventListener("mousemove",(function(el){
+			return function(e)
+			{
+				if (el["mouseisdown"])
+				{
+					var offset = el["mouseoffset"];
+					console.log(offset);
+					el.style.backgroundPosition = [offset[0]+e.clientX,"px ",offset[1]+e.clientY,"px"].join("");
+				}
+			}
+		})(b),false);
+		b.addEventListener("mouseup",(function(el){
+			return function(e)
+			{
+				el["mouseisdown"] = false;
+			}
+		})(b),false);
+	}
+})(document);
+</script>
+</body>
+</html>

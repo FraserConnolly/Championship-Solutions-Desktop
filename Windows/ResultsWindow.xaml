@@ -1,0 +1,106 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:DM="clr-namespace:ChampionshipSolutions.DM;assembly=ChampionshipSolutions.DM" mc:Ignorable="d" x:Class="ChampionshipSolutions.ResultsWindow"
+        Title="Results Window" Height="676" Width="700" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="aChampionshipViewSource" d:DesignSource="{d:DesignInstance {x:Type DM:Championship}, CreateList=True}"/>
+        <CollectionViewSource x:Key="aChampionshipEventsViewSource" Source="{Binding Events, Source={StaticResource aChampionshipViewSource}}"/>
+        <CollectionViewSource x:Key="aChampionshipEventsResultsViewSource" Source="{Binding Results, Source={StaticResource aChampionshipEventsViewSource}}"/>
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="{x:Type TextBlock}" x:Key="HeaderText">
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource aChampionshipEventsResultsViewSource}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Style="{StaticResource HeaderText}" x:Name="lblEvent" FontSize="18" Text="Hello World" Margin="10,5,2,0" />
+
+        <DataGrid Grid.Row="2" x:Name="resultsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,10" SelectionChanged="resultsDataGrid_SelectionChanged" SelectionMode="Single">
+
+            <DataGrid.Resources>
+                <ContextMenu x:Key="ResultsRowMenu">
+                    <MenuItem Header="Insert Above" Click="InsertAboveMenuItem_Click"></MenuItem>
+                    <MenuItem Header="Insert Below" Click="InsertBelowMenuItem_Click"></MenuItem>
+                    <MenuItem Header="Remove"       Click="RemoveResult"></MenuItem>
+                    <Separator></Separator>
+                    <MenuItem Header="Edit" Click="EditMenuItem_Click"></MenuItem>
+                </ContextMenu>
+            </DataGrid.Resources>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="ContextMenu" Value="{StaticResource ResultsRowMenu}"></Setter>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding printRank, Mode=OneWay}" Header="Rank" Width="SizeToHeader" SortDirection="Ascending"/>
+                <DataGridTextColumn Binding="{Binding printResultValue, Mode=OneWay}" Header="Value" Width="SizeToHeader"/>
+                <DataGridTextColumn Binding="{Binding achievedStandardsShort, Mode=OneWay}" Header="Standards" Width="SizeToHeader"/>
+                <DataGridTextColumn Binding="{Binding Competitor.Vest, Mode=OneWay}" Header="Vest" Width="SizeToHeader"/>
+                <DataGridTemplateColumn Header="Name" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="AthleteName_Click" Content="{Binding Competitor.Name,Mode=OneWay}" Tag="{Binding Competitor}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Competitor.School, Mode=OneWay}" Header="School" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Competitor.YearGroup, Mode=OneWay}" Header="Year Group" Width="SizeToHeader"/>
+                <!--<DataGridTextColumn Binding="{Binding Duration, Mode=OneWay}" Header="Duration" Width="SizeToHeader"/>-->
+                <DataGridCheckBoxColumn x:Name="certificateEarnedColumn" Binding="{Binding CertificateEarned, Mode=OneWay}" Header="Certificate Earned" IsReadOnly="True" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <UniformGrid Grid.Column="0" Grid.Row="1"  Rows="1">
+        <!--<StackPanel Orientation="Horizontal">-->
+            <Button x:Name="btnOpenResultsCard" Margin="3" Click="OpenResultsCard_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" >Open Results Card</TextBlock>
+            </Button>
+            <Button x:Name="btnOpenHeats" Visibility="Collapsed" Margin="3" Click="OpenHeats_Click" >
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Open Heats</TextBlock>
+            </Button>
+            <Button x:Name="btnShowScannedResults" Visibility="Visible" Margin="3" Click="ShowScan_Click" >
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Show Scanned Results</TextBlock>
+            </Button>
+            <Button x:Name="btnSetHeatAsFinal" Margin="3" Click="SetRunHeatAsFinal_Click" MouseRightButtonUp="UnSetRunHeatAsFinal_Click" >
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Heat Run As Final</TextBlock>
+            </Button>
+
+            <Button Content="Refresh" Margin="3" Click="Refresh_Click"/>
+
+            <Button Content="Move Up" Margin="3" Click="MoveUp_Click"/>
+            <Button Content="Remove" Margin="3" Click="RemoveResult" />
+            <Button Content="Move Down" Margin="3" Click="MoveDown_Click"/>
+            <Button Content="Insert DNF" Margin="3" Click="InsertDNF_Click" Visibility="Collapsed" />
+        </UniformGrid>
+        <DataGrid Grid.Row="3" Margin="10" x:Name="dgScoringTeams" AutoGenerateColumns="False" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ScoringTeamName, Mode=OneWay}" Header="Scoring Team" Width="SizeToHeader"/>
+                <DataGridTextColumn Binding="{Binding Rank, Mode=OneWay}" Header="Rank" Width="SizeToHeader"/>
+                <DataGridTextColumn Binding="{Binding Team, Mode=OneWay}" Header="Team" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Positions, Mode=OneWay}" Header="Positions" Width="*"/>
+                <DataGridTextColumn Binding="{Binding sumOfPositions, Mode=OneWay}" Header="Sum Of Positions" Width="SizeToHeader"/>
+                <DataGridTextColumn Binding="{Binding Points, Mode=OneWay}" Header="Points" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Button Grid.Row="4" Content="Close" Margin="10,0,10,10" Click="Close_Click" Grid.Column="1"/>
+
+    </Grid>
+</Window>

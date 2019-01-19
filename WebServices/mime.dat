@@ -1,0 +1,9 @@
+.htm; text/html
+.html; text/html
+.asp; text/html
+.xml; text/xml
+.bmp; image/bmp
+.gif; image/gif
+.png; image/png
+.py; text/html
+

@@ -1,0 +1,81 @@
+﻿<Window x:Class="ChampionshipSolutions.ControlRoom.AnnouncersPrintout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AnnouncersPrintout" ResizeMode="NoResize" Height="532" Width="756">
+    <Grid>
+        <Button Content="Print" Margin="0,0,10,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="Button_Click"/>
+        <Button Content="Refresh" Margin="0,0,90,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="Button_Click_1"/>
+        <Grid x:Name="gridPrintable" Margin="67,49,0,35" >
+            <!--<Border BorderThickness="1" BorderBrush="Black" />-->
+            <Grid  Margin="15,20,15,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="55*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/> <!--Individuals-->
+                    <ColumnDefinition Width="130*"/> <!--team-->
+                    <ColumnDefinition Width="45*"/> <!--MB-->
+                    <ColumnDefinition Width="45*"/> <!--MG-->
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="45*"/> <!--SB-->
+                    <ColumnDefinition Width="60*"/> <!--Totals-->
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="12" Grid.RowSpan="3" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="12" Grid.RowSpan="1" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="12" Grid.RowSpan="2" Grid.Row="1" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="12" Grid.RowSpan="2" Grid.Row="1" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="12" Grid.RowSpan="2" Grid.Row="1" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="12" Grid.RowSpan="2" Grid.Row="1" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="12" Grid.RowSpan="2" Grid.Row="1" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="11" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="2" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="3" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="4" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="5" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="6" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="7" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="8" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="9" />
+                <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="1" Grid.Column="10" />
+                <Label x:Name="lblEventName" Content="Event Name" FontSize="18" Grid.ColumnSpan="11"/>
+                <Label Content="Top Individuals" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="1" Height="30" FontSize="15" Width="110"/>
+
+                <Label Content="Team" Grid.Column="1" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Left" />
+                <Label Content="MB" Grid.Column="2" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="MG" Grid.Column="3" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="JB" Grid.Column="4" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="JG" Grid.Column="5" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="IB" Grid.Column="6" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="IG" Grid.Column="7" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="SB" Grid.Column="8" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="SG" Grid.Column="9" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+                <Label Content="Total" Grid.Column="10" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" />
+
+
+
+                <Label x:Name="lblTopIndividuals" Grid.Row="2" Grid.RowSpan="1" FontSize="15" />
+                
+                <Label x:Name="lblTeam" Grid.Column="1" Grid.Row="2"  FontSize="15"/>
+                <Label x:Name="lblMB" Grid.Column="2" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblMG" Grid.Column="3" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblJB" Grid.Column="4" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblJG" Grid.Column="5" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblIB" Grid.Column="6" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblIG" Grid.Column="7" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblSB" Grid.Column="8" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblSG" Grid.Column="9" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblTotal" Grid.Column="10" Grid.Row="2"  FontSize="15" HorizontalContentAlignment="Center" />
+            </Grid>
+
+
+        </Grid>
+
+    </Grid>
+</Window>

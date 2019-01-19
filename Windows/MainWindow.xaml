@@ -1,0 +1,382 @@
+﻿<Window xmlns:Controls="clr-namespace:ChampionshipSolutions.Controls"  
+        x:Class="ChampionshipSolutions.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChampionshipSolutions"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Championship Solutions" 
+        MinHeight="503" MinWidth="750"
+        Height="657" Width="780" 
+        Icon="/Assets/Icons/Championship_Solutions_8.ico"
+        xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+        xmlns:WPFTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+      Loaded="Window_Loaded">
+    <!--Height="503" Width="742" MinWidth="742" MaxWidth="742"-->
+
+    <Window.DataContext>
+        <Binding Source="{x:Static Application.Current}"/>
+    </Window.DataContext>
+
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+
+        <Style x:Key="ButtonFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle SnapsToDevicePixels="true" Margin="4" Stroke="Black" StrokeDashArray="1 2" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="Transparent" />
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CSApplicationButtons" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FF005CAA"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="20,5,0,5"/>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <!--<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <!--<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <!--<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>-->
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="LeftTabListBox" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,6,0,0" />
+            <Setter Property="Padding" Value="0,0,0,0" />
+            <Setter Property="IsEnabled" Value="{Binding isEnabled}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+
+                        <Border x:Name="Bd" BorderBrush="#FFD7E5F0" BorderThickness="1,1,1,1" Padding="0" CornerRadius="8,8,8,8" Margin="4,2">
+                            <Grid Width="120" Margin="5">
+                                <TextBlock x:Name="Txt"  FontSize="15" Foreground="#FF2776B9" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Content}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsSelected" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#B2F0F8FF"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                    <Condition Property="IsSelected" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="Transparent" />
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#CCFFFFFF"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#CCFFFFFF" />
+                                <Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1" />
+                                <Setter Property="CornerRadius" TargetName="Bd" Value="0,8,8,0" />
+                                <Setter Property="Margin" TargetName="Bd" Value="0,2,0,2" />
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" TargetName="Txt" Value="#FF838383"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SplitButtonBaseBar" TargetType="{x:Type Controls:SplitButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Controls:SplitButton}">
+                        <Border HorizontalAlignment="Stretch" 
+        					VerticalAlignment="Stretch"
+        					BorderBrush="{TemplateBinding BorderBrush}"
+        					Background="{TemplateBinding Background}"
+        					BorderThickness="{TemplateBinding BorderThickness}"
+        					SnapsToDevicePixels="True" 
+                            x:Name="buttonChrome">
+
+                            <Grid Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="16"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border x:Name="Bd" Margin="1,1,2,1">
+                                    <ContentPresenter
+        								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+        								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+        								Margin="{TemplateBinding Padding}"
+        								RecognizesAccessKey="True"
+								/>
+                                </Border>
+
+                                <Path x:Name="path"
+        							Data="M0,0L3,3 6,0z" 
+        							Margin="4,1,0,0" 
+        							Grid.Column="1"
+        							Stroke="{TemplateBinding Foreground}" 
+        							Fill="{TemplateBinding Foreground}" 
+        							HorizontalAlignment="Center" 
+        							VerticalAlignment="Center"
+								/>
+
+                                <Button x:Name="PART_DropDown"
+        							BorderBrush="{TemplateBinding BorderBrush}"
+        							Background="{TemplateBinding Background}"
+        							BorderThickness="{TemplateBinding BorderThickness}"
+        							Foreground="{TemplateBinding Foreground}"
+        							VerticalAlignment="Stretch"
+        							HorizontalAlignment="Stretch"
+        							Grid.Column="1"
+        							Margin="1,-3,-3,-3"
+        							Style="{DynamicResource classicDropDownStyle}"
+        							Opacity="0">
+
+                                    <Path Data="M0,0L3,3 6,0z" Margin="0,1,0,0" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}"/>
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="Background" TargetName="buttonChrome" Value="{DynamicResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsContextMenuOpen" Value="true">
+                                    <Setter Property="Background" TargetName="buttonChrome" Value="{DynamicResource Button.Pressed.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsContextMenuOpen" Value="false">
+                                <Setter Property="Background" TargetName="buttonChrome" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                <Setter Property="Background" TargetName="buttonChrome" Value="{DynamicResource Button.Disabled.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="buttonChrome" Value="{DynamicResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="Mode" Value="Dropdown">
+                                <Setter Property="Visibility" TargetName="PART_DropDown" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="Mode" Value="Button">
+                                <Setter Property="Visibility" TargetName="PART_DropDown" Value="Collapsed"/>
+                                <Setter Property="Visibility" TargetName="path" Value="Collapsed"/>
+                                <Setter Property="Grid.ColumnSpan" TargetName="Bd" Value="2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <WPFTool:BusyIndicator Name="busyIndicator" BusyContent="Loading File, Please Wait..." >
+    <Grid Margin="0" >
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/Championship Solutions;component/SplitButton/Themes/Classic.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/bg.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+            <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="10,10,10,10" CornerRadius="8,8,8,8" Background="#B2F0F8FF" BorderThickness="0" >
+                <DockPanel >
+                    <Border Width="10" BorderThickness="0"></Border>
+        <!-- Left hand tab control -->
+        <Border  Margin="0,10,0,10" Padding="0"  >
+            <ListBox x:Name="MainPageControlsList" Width="190" Visibility="Visible"   
+                BorderThickness="0" Padding="0" Background="Transparent" Margin="8,8,-1,8"
+                ItemContainerStyle="{DynamicResource LeftTabListBox}" 
+                FlowDirection="RightToLeft" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                SelectionChanged="MainPageControlsList_SelectionChanged"  />
+        </Border>
+
+        <!--Centre (Main) block-->
+        <Border HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" BorderThickness="0" Margin="0,10,10,10">
+            <Border Background="#CCFFFFFF" CornerRadius="4,4,4,4" Margin="0,10,10,10" BorderThickness="0" >
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="8" />
+            </Border>
+        </Border>
+                </DockPanel>
+            </Border>
+            <!--Bottom left corner-->
+        <Border Grid.Row="2" CornerRadius="8,0,0,8" Margin="10,10,0,10" Background="#B2F0F8FF"  >
+            <StackPanel Margin="8,0,8,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Visibility="Collapsed"> 
+                <Button IsEnabled="{Binding CanOpenFile}" Style="{DynamicResource CSApplicationButtons}" Foreground="#FF005CAA">
+                    <TextBlock FontWeight="Bold" Text="Preferences" ></TextBlock>
+                </Button>
+                <Button Style="{DynamicResource CSApplicationButtons}" >
+                    <TextBlock FontWeight="Bold" Text="Licences" ></TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!--Bottom mid and right-->
+        <Border Grid.Row="2" Grid.Column="1" CornerRadius="0,8,8,0" Margin="0,10,10,10" Background="#B2F0F8FF" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+
+                <!--<Controls:SplitButton BorderBrush="{DynamicResource Button.Static.Border}" BorderThickness="1" 
+                                      Padding="5" Margin="1" Mode="Dropdown" Placement="Top" Background="Transparent" 
+                                      Command="{Binding NewSingleFile}"
+                                      Style="{DynamicResource SplitButtonBaseBar}">
+                    <Controls:SplitButton.Content>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="8*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="/Assets/Icons/VSO_NewFile_40x.png" Width="30" Margin="4,0" />
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center">New</TextBlock>
+                        </Grid>
+                    </Controls:SplitButton.Content>
+                    <MenuItem Header="New Single Championship" ToolTip="Recommended for one off or annual Championships" Command="{Binding NewSingleFile}"/>
+                    <MenuItem Header="New Multiple Championship" Command="{Binding NewMultipleFile}"/>
+                </Controls:SplitButton>-->
+
+                    <Button Padding="5" Width="70" Margin="1" Background="Transparent" Command="{Binding NewSingleFile}" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="8*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="/Assets/Icons/VSO_NewFile_40x.png" Width="30" Margin="4,0" />
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center">New</TextBlock>
+                        </Grid>
+                    </Button>
+
+
+                    <Button x:Name="btnOpen" Padding="5" Width="70" Margin="1" Background="Transparent" Command="{Binding OpenFile}" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="8*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="/Assets/Icons/OpenFolder_256x.png" Width="30" Margin="4,0" />
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Center">Open</TextBlock>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnClose" Padding="5" Width="70" Margin="1" Background="Transparent" Command="{Binding CloseFile}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="8*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="/Assets/Icons/CloseDocument_256x.png" Width="30" Margin="4,0" />
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Center">Close</TextBlock>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!--Top menu-->
+        <Menu x:Name="menu" Grid.Row="0" Grid.ColumnSpan="2" Background="#E5F0F0F0" >
+            <MenuItem Header="File">
+                    <MenuItem Header="New" Command="{Binding NewSingleFile}">
+                    <!--<MenuItem Header="Single Championship" ToolTip="Recommended for one off or annual Championships" Command="{Binding NewSingleFile}"/>
+                    <MenuItem Header="Multiple Championship" ToolTip="" Command="{Binding NewMultipleFile}"/>-->
+                </MenuItem>
+                <MenuItem Header="Open Championship" Command="{Binding OpenFile}" >
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Icons/OpenFolder_256x.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="mruMenu" Header="Recent Championship" />
+                <MenuItem Header="Close Championship" Command="{Binding CloseFile}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Icons/CloseDocument_256x.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--<Separator />
+                <MenuItem Header="Lock File" >
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Icons/Lock_256x.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Unlock File" >
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Icons/Unlock_16x.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Exit">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Icons/F12_CloseErrorBoxGrey.png" />
+                    </MenuItem.Icon>
+                </MenuItem>-->
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Click="About_Click" />
+                    <MenuItem Header="View Help" Click="Help_Click" />
+            </MenuItem>
+        </Menu>
+            </Grid>
+    </WPFTool:BusyIndicator>
+
+</Window>
