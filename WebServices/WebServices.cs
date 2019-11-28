@@ -23,11 +23,11 @@ namespace ChampionshipSolutions
 
         public event DynamicFileRequestedEventHandler DynamicFileRequestedEvent;
 
-        public WebServer( string path, string localHost, int Port = 80 )
+        public WebServer( string path, int Port = 80 )
         {
             server = new HttpServer
             {
-                EndPoint = new IPEndPoint( IPAddress.Loopback, Port )
+                EndPoint = new IPEndPoint( IPAddress.Any, Port )
             };
 
             ServerDirectory = path;

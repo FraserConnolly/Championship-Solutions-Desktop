@@ -234,7 +234,6 @@ namespace ChampionshipSolutions.ViewModel
 
             CSWebService = new WebServer(
                 HostDirectory,
-                "127.0.0.1",
                 Championship.WebServerPort
                 );
 

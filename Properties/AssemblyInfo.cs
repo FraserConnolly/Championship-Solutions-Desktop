@@ -56,7 +56,7 @@ Some icons provided by https://www.icons8.com/"
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "4.4.1184.19019" )]
-[assembly: AssemblyFileVersion( "4.4.1184.19019" )]
+[assembly: AssemblyVersion( "4.4.1186.19332" )]
+[assembly: AssemblyFileVersion( "4.4.1186.19332" )]
 [assembly: Guid ( "9A8FC093-2B3F-483C-AFE5-1E1BB8B9DD36" )]
 
